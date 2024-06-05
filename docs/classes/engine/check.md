@@ -52,7 +52,6 @@ def value_is_available(
         ValueError: недоступное значение.
     """
 ```
-* [] value_is_available -
 
 
 ## 4. Инициализация экземпляра класса;
