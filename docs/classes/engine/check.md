@@ -29,7 +29,7 @@ def value_type(
         expected_type (typing.Any): ожидаемый тип данных.
 
     Raises:
-        ValueError: Некорректный тип данных.
+        TypeError: Некорректный тип данных.
     """
 ```
 ```python 3.13
