@@ -93,7 +93,7 @@ class Check:
         """
 
         if value not in available_values:
-            raise ValueError("Некорректное значение;")
+            raise ValueError("Недоступное значение;")
 
 
     # ##################################################
