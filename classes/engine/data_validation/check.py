@@ -18,7 +18,7 @@ import typing
 class Check:
     """
     Notes:
-        ...
+        Класс отвечает за проверку корректности входных и выходных данных.
 
     Attributes:
         ...
@@ -68,13 +68,13 @@ class Check:
             TypeError: Некорректный тип данных.
         """
 
-        if isinstance(value, expected_type):
+        if not isinstance(value, expected_type):
             raise TypeError("Некорректный тип данных;")
 
 
     @staticmethod
     def value_is_available(
-            value: tiping.Any,
+            value: typing.Any,
             available_values: typing.Any
     ) -> None:
         """
