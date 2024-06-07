@@ -11,7 +11,7 @@ import math
 
 
 # Проектные библиотеки
-from classes.engine.data_validation.check import Check
+from classes.character.characteristics import Characteristics
 
 
 # ##################################################
@@ -59,40 +59,22 @@ class Modifiers:
     # ##################################################
     def __init__(
             self,
-            strength: int,
-            dexterity: int,
-            endurance: int,
-            intelligence: int,
-            wisdom: int,
-            charisma: int
+            class_characteristics: Characteristics
     ) -> None:
         """
         Notes:
             Инициализация экземпляра класса Модификаторов характеристик персонажа
 
         Args:
-            strength (int): показатель силы персонажа;
-            dexterity (int): показатель ловкости персонажа;
-            endurance (int): показатель выносливости персонажа;
-            intelligence (int): показатель интеллекта персонажа;
-            wisdom (int): показатель мудрости персонажа;
-            charisma (int): показатель харизмы персонажа;
+            class_characteristics (Characteristics): экземпляр класса Характеристик персонажа.
         """
-
-        for value in (strength, dexterity, endurance,
-                      intelligence, wisdom, charisma
-        ):
-            Check.value_type(
-                value=value,
-                expected_type=int
-            )
-
-        self._strength: int = self.calc_modifier(strength)
-        self._dexterity: int = self.calc_modifier(dexterity)
-        self._endurance: int = self.calc_modifier(endurance)
-        self._intelligence: int = self.calc_modifier(intelligence)
-        self._wisdom: int = self.calc_modifier(wisdom)
-        self._charisma: int = self.calc_modifier(charisma)
+        self._class_characteristics = class_characteristics
+        self._strength: int = self.calc_modifier(self._class_characteristics.strength)
+        self._dexterity: int = self.calc_modifier(self._class_characteristics.dexterity)
+        self._endurance: int = self.calc_modifier(self._class_characteristics.endurance)
+        self._intelligence: int = self.calc_modifier(self._class_characteristics.intelligence)
+        self._wisdom: int = self.calc_modifier(self._class_characteristics.wisdom)
+        self._charisma: int = self.calc_modifier(self._class_characteristics.charisma)
 
 
     # ##################################################
@@ -102,7 +84,7 @@ class Modifiers:
     def strength(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя силы.
+            Геттер, отвечающий за получение показателя Силы.
         """
 
         return self._strength
@@ -111,7 +93,7 @@ class Modifiers:
     def dexterity(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя ловкости.
+            Геттер, отвечающий за получение показателя Ловкости.
         """
 
         return self._dexterity
@@ -120,7 +102,7 @@ class Modifiers:
     def endurance(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя выностивости.
+            Геттер, отвечающий за получение показателя Телосложения.
         """
 
         return self._endurance
@@ -129,17 +111,16 @@ class Modifiers:
     def intelligence(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя интеллекта (эта характеристика
-            бесполезна для вас!).
+            Геттер, отвечающий за получение показателя Интеллекта.
         """
 
-        return self._inteligence
+        return self._intelligence
 
     @property
     def wisdom(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя мудрости.
+            Геттер, отвечающий за получение показателя Мудрости.
         """
 
         return self._wisdom
@@ -148,7 +129,7 @@ class Modifiers:
     def charisma(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя харизмы.
+            Геттер, отвечающий за получение показателя Харизмы.
         """
 
         return self._charisma
@@ -163,7 +144,8 @@ class Modifiers:
     ) -> int:
         """
         Notes:
-            ...
+            Метод рассчитывает модификатор по формуле:
+            math.floor((characteristic - 10) / 2).
 
         Args:
             characteristic (int): значение характеристики для расчёта модификатора.
