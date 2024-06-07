@@ -10,7 +10,7 @@
 
 # Проектные библиотеки
 from classes.mechanics.basic.dice import Dice
-from classes.engine.data_validation.check import Check
+from classes.character.races import Race
 
 # ##################################################
 # КЛАССЫ
@@ -57,40 +57,22 @@ class Characteristics:
     # ##################################################
     def __init__(
             self,
-            race_strength: int,
-            race_dexterity: int,
-            race_endurance: int,
-            race_intelligence: int,
-            race_wisdom: int,
-            race_charisma: int
+            class_race: Race
         ) -> None:
         """
         Notes:
             Инициализация экземпляра класса Характеристик персонажа.
 
         Args:
-            race_strength (int): расовый модификатор силы персонажа;
-            race_dexterity (int): расовый модификатор ловкости персонажа;
-            race_endurance (int): расовый модификатор выносливости персонажа;
-            race_intelligence (int): расовый модификатор интеллекта персонажа;
-            race_wisdom (int): расовый модификатор мудрости персонажа;
-            race_charisma (int): расовый модификатор харизмы персонажа;
+            claass_race
         """
-
-        for value in (race_strength, race_dexterity, race_endurance,
-                      race_intelligence, race_wisdom, race_charisma
-        ):
-            Check.value_type(
-                value=value,
-                expected_type=int
-            )
-
-        self._strength: int = self.gen_characteristic() + race_strength
-        self._dexterity: int = self.gen_characteristic() + race_dexterity
-        self._endurance: int = self.gen_characteristic() + race_endurance
-        self._inteligence: int = self.gen_characteristic() + race_intelligence
-        self._wisdom: int = self.gen_characteristic() + race_wisdom
-        self._charisma: int = self.gen_characteristic() + race_charisma
+        self._class_race: Race = class_race
+        self._strength: int = self.gen_characteristic() + self._class_race.strength
+        self._dexterity: int = self.gen_characteristic() + self._class_race.dexterity
+        self._endurance: int = self.gen_characteristic() + self._class_race.endurance
+        self._inteligence: int = self.gen_characteristic() + self._class_race.intelligence
+        self._wisdom: int = self.gen_characteristic() + self._class_race.wisdom
+        self._charisma: int = self.gen_characteristic() + self._class_race.charisma
 
 
     # ##################################################
@@ -100,7 +82,7 @@ class Characteristics:
     def strength(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя силы.
+            Геттер, отвечающий за получение показателя Силы.
         """
 
         return self._strength
@@ -109,7 +91,7 @@ class Characteristics:
     def dexterity(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя ловкости.
+            Геттер, отвечающий за получение показателя Ловкости.
         """
 
         return self._dexterity
@@ -118,7 +100,7 @@ class Characteristics:
     def endurance(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя выностивости.
+            Геттер, отвечающий за получение показателя Телосложения.
         """
 
         return self._endurance
@@ -127,8 +109,7 @@ class Characteristics:
     def intelligence(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя интеллекта (эта характеристика
-            бесполезна для вас!).
+            Геттер, отвечающий за получение показателя Интеллекта.
         """
 
         return self._inteligence
@@ -137,7 +118,7 @@ class Characteristics:
     def wisdom(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя мудрости.
+            Геттер, отвечающий за получение показателя Мудрости.
         """
 
         return self._wisdom
@@ -146,7 +127,7 @@ class Characteristics:
     def charisma(self) -> int:
         """
         Notes:
-            Геттер, отвечающий за получение показателя харизмы.
+            Геттер, отвечающий за получение показателя Харизмы.
         """
 
         return self._charisma
