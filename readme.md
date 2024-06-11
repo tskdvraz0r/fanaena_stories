@@ -4,6 +4,10 @@
 
 
 ## ОБНОВЛЕНИЯ
+### 11.06.2024
+* 1. [REFACT] Полная переработка внутренней "архитектуры" проекта.
+
+
 ### 07.06.2024
 * 1. [FEAT-5] Реализован класс Characteristics;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/character/characteristics.md),
