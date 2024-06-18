@@ -1,42 +1,53 @@
-# НАИМЕНОВАНИЕ: Истории Фанаэны
-## ВЕРСИЯ: 0.
+# ИСТОРИИ ФАНАЭНЫ
+## Версия: 0.17.9
 
-## ОПИСАНИЕ
+## Описание:
 Консольная (на данный момент) приключенческая RPG-игра. Частично заимствует механики DnD.
 
 
-## ОБНОВЛЕНИЯ
+## Обновления
+### 19.06.2024
+* 1. [FEAT-24] Реализован класс BasicProficiencyBonus;
+[Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/stats/proficiency_bonus/task_24_basic_proficiency_bonus.md)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/stats/proficiency_bonus/basic_proficiency_bonus.py)
+
+* 2. [FEAT-16] Реализован класс BasicLevel;
+[Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/stats/level/task_16_basic_level.md)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/stats/level/basic_level.py)
+
+
 ### 11.06.2024
 * 1. [REFACT] Полная переработка внутренней "архитектуры" проекта.
+
 
 ### 10.06.2024
 * 1. [FEAT-9] Реализован класс HumanRace;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/races/task_9_human_race.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/human_race.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/human_race.py)
 
 * 2. [FEAT-10] Реализован класс ZenhaasRace;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/races/task_10_zenhaas_race.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/zenhaas_race.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/zenhaas_race.py)
 
 * 3. [FEAT-11] Реализован класс XylaatRace;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/races/task_11_xylaat_race.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/xylaat_race.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/xylaat_race.py)
 
 * 4. [FEAT-12] Реализован класс NaaraRace;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/races/task_12_naara_race.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/naara_race.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/races/naara_race.py)
 
 * 5. [FEAT-13] Реализован класс WarriorProfession;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/professions/task_13_warrior_profession.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/warrior_profession.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/warrior_profession.py)
 
 * 6. [FEAT-14] Реализован класс RangerProfession;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/professions/task_14_ranger_profession.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/ranger_profession.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/ranger_profession.py)
 
 * 7. [FEAT-15] Реализован класс WizzardProfession;
 [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/classes/characters/professions/task_15_wizzard_profession.md)
-[Редизация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/wizzard_profession.py)
+[Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/assets/classes/characters/professions/wizzard_profession.py)
 
 
 
