@@ -60,5 +60,5 @@
 ### 05.06.2024
 | id | type | notes | link_doc | link_dev |
 | :---: | :--- | :--- | :---: | :---: |
-| 1 | FEAT-01 | Реализован класс Check; | [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/package/engine/data_validation/task_1_check.md) | [Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/classes/engine/data_validation/check.py) |
+| 1 | FEAT-01 | Реализован класс Check; | [Документация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/package/engine/data_validation/task_1_check.md) | [Реализация](https://github.com/tskdvraz0r/fanaena_stories/blob/main/packages/engine/data_validation/check.py) |
 | 2 | FIX-1.1. | Исправлены опечатки возбуждаемых исключений; |  |  |
