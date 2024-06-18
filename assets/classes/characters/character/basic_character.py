@@ -15,9 +15,9 @@ from packages.engine.data_validation.check import Check
 
 from assets.classes.characters.races.basic_race import BasicRace
 from assets.classes.characters.professions.basic_profession import BasicProfession
-from assets.classes.characters.characteristics.basic_characteristics import BasicCharacteristics
-from assets.classes.characters.characteristics.basic_modifiers import BasicModifiers
-from assets.classes.characters.characteristics.basic_hmsp import BasicHMSP
+from classes.characters.stats.characteristics.basic_characteristics import BasicCharacteristics
+from classes.characters.stats.modifiers.basic_modifiers import BasicModifiers
+from classes.characters.stats.hmsp.basic_hmsp import BasicHMSP
 
 
 # ##################################################
