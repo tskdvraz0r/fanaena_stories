@@ -5,6 +5,9 @@
 Консольная (на данный момент) приключенческая RPG-игра. Частично заимствует механики DnD.
 
 
+## Амбиции:
+[TODO](https://github.com/tskdvraz0r/fanaena_stories/blob/main/docs/todo.md)
+
 ## Обновления
 ### 19.06.2024
 * 1. [FEAT-24] Реализован класс BasicProficiencyBonus;
