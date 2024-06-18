@@ -68,7 +68,10 @@ class BasicProfession:
     # 4. ИНИЦИАЛИЗАЦИЯ ЭКЗЕМПЛЯРА КЛАССА
     # ##################################################
     def __init__(self) -> None:
+        # БАЗОВАЯ ИНФОРМАЦИЯ
         self._name: str = "Родительский класс игровых профессий"
+
+        # КОСТИ ОЧКОВ
         self._health_points_dice: int = 6
         self._mind_points_dice: int = 6
         self._mana_points_dice: int = 6
