@@ -67,7 +67,10 @@ class WarriorProfession(BasicProfession):
     def __init__(self) -> None:
         super().__init__()
 
+        # БАЗОВАЯ ИНФОРМАЦИЯ
         self._name: str = "Воин"
+
+        # КОСТИ ОЧКОВ
         self._health_points_dice: int = 10
         self._mana_points_dice: int = 4
 
