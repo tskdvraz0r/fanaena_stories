@@ -13,7 +13,7 @@ import math
 # Проектные библиотеки
 from packages.engine.data_validation.check import Check
 
-from classes.characters.stats.characteristics.basic_characteristics import BasicCharacteristics
+from assets.classes.characters.stats.characteristics.basic_characteristics import BasicCharacteristics
 
 
 # ##################################################
