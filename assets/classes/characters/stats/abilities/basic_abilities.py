@@ -15,7 +15,7 @@ from packages.engine.data_validation.check import Check
 
 from assets.classes.characters.stats.modifiers.basic_modifiers import BasicModifiers
 from assets.classes.characters.stats.proficiency_bonus.basic_proficiency_bonus import BasicProficiencyBonus
-from assets.classes.characters.stats.posessions.basic_posessions import BasicPosessions
+from assets.classes.characters.stats.posessions.basic_abilities_posessions import BasicAbilitiesPosessions
 
 
 # ##################################################
@@ -108,11 +108,11 @@ class BasicAbilities:
             self,
             class_modifiers: BasicModifiers,
             class_proficiency_bonus: BasicProficiencyBonus,
-            class_posessions: BasicPosessions
+            class_abilities_posessions: BasicAbilitiesPosessions
     ) -> None:
         for value, expected_type in zip(
-                (class_modifiers, class_proficiency_bonus, class_posessions),
-                (BasicModifiers, BasicProficiencyBonus, BasicPosessions),
+                (class_modifiers, class_proficiency_bonus, class_abilities_posessions),
+                (BasicModifiers, BasicProficiencyBonus, BasicAbilitiesPosessions),
         ):
             Check.value_type(
                 value=value,
@@ -121,35 +121,37 @@ class BasicAbilities:
 
         self._class_modifiers: BasicModifiers = class_modifiers
         self._class_proficiency_bonus: BasicProficiencyBonus = class_proficiency_bonus
-        self._class_posessions: BasicPosessions = class_posessions
+        self._class_abilities_posessions: BasicAbilitiesPosessions = class_abilities_posessions
 
         # СИЛА
-        self._athletics: int = self.calc_abilitie_value(abilitie="athletics")
+        self._athletics: int = 0
 
         # ЛОВКОСТЬ
-        self._acrobatics: int = self.calc_abilitie_value(abilitie="acrobatics")
-        self._stealth: int = self.calc_abilitie_value(abilitie="stealth")
-        self._sleight_of_hand: int = self.calc_abilitie_value(abilitie="sleight_of_hand")
+        self._acrobatics: int = 0
+        self._stealth: int = 0
+        self._sleight_of_hands: int = 0
 
         # ИНТЕЛЛЕКТ
-        self._analysis: int = self.calc_abilitie_value(abilitie="analysis")
-        self._history: int = self.calc_abilitie_value(abilitie="history")
-        self._magic: int = self.calc_abilitie_value(abilitie="magic")
-        self._nature: int = self.calc_abilitie_value(abilitie="nature")
-        self._religion: int = self.calc_abilitie_value(abilitie="religion")
+        self._analysis: int = 0
+        self._history: int = 0
+        self._magic: int = 0
+        self._nature: int = 0
+        self._religion: int = 0
 
         # МУДРОСТЬ
-        self._animal_care: int = self.calc_abilitie_value(abilitie="animal_care")
-        self._insight: int = self.calc_abilitie_value(abilitie="insight")
-        self._medicine: int = self.calc_abilitie_value(abilitie="medicine")
-        self._perception: int = self.calc_abilitie_value(abilitie="perception")
-        self._survival: int = self.calc_abilitie_value(abilitie="survival")
+        self._animal_care: int = 0
+        self._insight: int = 0
+        self._medicine: int = 0
+        self._perception: int = 0
+        self._survival: int = 0
 
         # ХАРИЗМА
-        self._deception: int = self.calc_abilitie_value(abilitie="deception")
-        self._intimidation: int = self.calc_abilitie_value(abilitie="intimidation")
-        self._performance: int = self.calc_abilitie_value(abilitie="performance")
-        self._persuasion: int = self.calc_abilitie_value(abilitie="persuasion")
+        self._deception: int = 0
+        self._intimidation: int = 0
+        self._performance: int = 0
+        self._persuasion: int = 0
+
+        self.calculate_abilitie_value()
 
 
 
@@ -158,318 +160,99 @@ class BasicAbilities:
     # ##################################################
     @property
     def athletics(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Атлетики.
-
-        Returns:
-            int: Значение навыка Атлетики.
-        """
-
-        Check.value_type(
-            value=self._acrobatics,
-            expected_type=int
-        )
-
-        return self._acrobatics
+        Check.value_type(value=self._athletics, expected_type=int)
+        return self._athletics
 
     @property
     def acrobatics(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Акробатика.
-
-        Returns:
-            int: Значение навыка Акробатика.
-        """
-
-        Check.value_type(
-            value=self._acrobatics,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._acrobatics, expected_type=int)
         return self._acrobatics
 
     @property
     def stealth(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Скрытность.
-
-        Returns:
-            int: Значение навыка Скрытность.
-        """
-
-        Check.value_type(
-            value=self._stealth,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._stealth, expected_type=int)
         return self._stealth
 
     @property
-    def sleight_of_hand(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Ловкость Рук.
-
-        Returns:
-            int: Значение навыка Ловкость Рук.
-        """
-
-        Check.value_type(
-            value=self._sleight_of_hand,
-            expected_type=int
-        )
-
-        return self._sleight_of_hand
+    def sleight_of_hands(self) -> int:
+        Check.value_type(value=self._sleight_of_hands, expected_type=int)
+        return self._sleight_of_hands
 
     @property
     def analysis(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Анализ.
-
-        Returns:
-            int: Значение навыка Анализ.
-        """
-
-        Check.value_type(
-            value=self._analysis,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._analysis, expected_type=int)
         return self._analysis
 
     @property
     def history(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка История.
-
-        Returns:
-            int: Значение навыка История.
-        """
-
-        Check.value_type(
-            value=self._history,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._history, expected_type=int)
         return self._history
 
     @property
     def magic(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Магия.
-
-        Returns:
-            int: Значение навыка Магия.
-        """
-
-        Check.value_type(
-            value=self._magic,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._magic, expected_type=int)
         return self._magic
 
     @property
     def nature(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Природа.
-
-        Returns:
-            int: Значение навыка Природа.
-        """
-
-        Check.value_type(
-            value=self._nature,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._nature, expected_type=int)
         return self._nature
 
     @property
     def religion(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Религия.
-
-        Returns:
-            int: Значение навыка Религия.
-        """
-
-        Check.value_type(
-            value=self._religion,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._religion, expected_type=int)
         return self._religion
 
     @property
     def animal_care(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Забота о Животных.
-
-        Returns:
-            int: Значение навыка Забота о Животных.
-        """
-
-        Check.value_type(
-            value=self._animal_care,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._animal_care, expected_type=int)
         return self._animal_care
 
     @property
     def insight(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Проницательность.
-
-        Returns:
-            int: Значение навыка Проницательность.
-        """
-
-        Check.value_type(
-            value=self._insight,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._insight, expected_type=int)
         return self._insight
 
     @property
     def medicine(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Медицина.
-
-        Returns:
-            int: Значение навыка Медицина.
-        """
-
-        Check.value_type(
-            value=self._medicine,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._medicine, expected_type=int)
         return self._medicine
 
     @property
     def perception(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Восприятие.
-
-        Returns:
-            int: Значение навыка Восприятие.
-        """
-
-        Check.value_type(
-            value=self._perception,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._perception, expected_type=int)
         return self._perception
 
     @property
     def survival(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Выживание.
-
-        Returns:
-            int: Значение навыка Выживание.
-        """
-
-        Check.value_type(
-            value=self._survival,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._survival, expected_type=int)
         return self._survival
 
     @property
     def deception(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Обман.
-
-        Returns:
-            int: Значение навыка Обман.
-        """
-
-        Check.value_type(
-            value=self._deception,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._deception, expected_type=int)
         return self._deception
 
     @property
     def intimidation(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Запугивание.
-
-        Returns:
-            int: Значение навыка Запугивание.
-        """
-
-        Check.value_type(
-            value=self._intimidation,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._intimidation, expected_type=int)
         return self._intimidation
 
     @property
     def performance(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Выступление.
-
-        Returns:
-            int: Значение навыка Выступление.
-        """
-
-        Check.value_type(
-            value=self._performance,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._performance, expected_type=int)
         return self._performance
 
     @property
     def persuasion(self) -> int:
-        """
-        Notes:
-            Геттер, отвечающий за получение значения навыка Убеждение.
-
-        Returns:
-            int: Значение навыка Убеждение.
-        """
-
-        Check.value_type(
-            value=self._persuasion,
-            expected_type=int
-        )
-
+        Check.value_type(value=self._persuasion, expected_type=int)
         return self._persuasion
 
 
     # ##################################################
     # 6. МЕТОДЫ ЭКЗЕМПЛЯРА КЛАССА
     # ##################################################
-    def calc_abilitie_value(
-            self,
-            abilitie: str
-    ) -> int:
+    def calculate_abilitie_value(self) -> None:
         """
         Notes:
             Метод принимает на вход название способности и рассчитывает значение с учётом владения и бонуса мастерства.
@@ -481,67 +264,110 @@ class BasicAbilities:
             int: Значение способности.
         """
 
-        match abilitie:
-            case abilitie if abilitie in {"athletics"}:
-                return (
-                    self._class_modifiers.strength
-                    if self._class_posessions.abilities[abilitie] == False
-                    else self._class_modifiers.strength
-                    + self._class_proficiency_bonus.proficiency_bonus
-                )
 
-            case abilitie if abilitie in {
-                "acrobatics",
-                "stealth",
-                "sleight_of_hand",
-            }:
-                return (
-                    self._class_modifiers.dexterity
-                    if self._class_posessions.abilities[abilitie] == False
-                    else self._class_modifiers.dexterity
-                    + self._class_proficiency_bonus.proficiency_bonus
-                )
+        self._acrobatics = (
+            self._class_modifiers.dexterity + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.acrobatics
+            else self._class_modifiers.dexterity
+        )
 
-            case abilitie if abilitie in {
-                "analysis",
-                "history",
-                "magic",
-                "nature",
-                "religion",
-            }:
-                return (
-                    self._class_modifiers.intelligence
-                    if self._class_posessions.abilities[abilitie] == False
-                    else self._class_modifiers.intelligence
-                    + self._class_proficiency_bonus.proficiency_bonus
-                )
+        self._analysis = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.analysis
+            else self._class_modifiers.intelligence
+        )
+        self._animal_care = (
+            self._class_modifiers.wisdom + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.animal_care
+            else self._class_modifiers.wisdom
+        )
 
-            case abilitie if abilitie in {
-                "animal_care",
-                "insight",
-                "medicine",
-                "perception",
-                "survival",
-            }:
-                return (
-                    self._class_modifiers.wisdom
-                    if self._class_posessions.abilities[abilitie] == False
-                    else self._class_modifiers.wisdom
-                    + self._class_proficiency_bonus.proficiency_bonus
-                )
+        self._athletics = (
+            self._class_modifiers.strength + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.athletics
+            else self._class_modifiers.strength
+        )
 
-            case abilitie if abilitie in {
-                "deception",
-                "intimidation",
-                "performance",
-                "persuasion",
-            }:
-                return (
-                    self._class_modifiers.charisma
-                    if self._class_posessions.abilities[abilitie] == False
-                    else self._class_modifiers.charisma
-                    + self._class_proficiency_bonus.proficiency_bonus
-                )
+        self._deception = (
+            self._class_modifiers.charisma + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.deception
+            else self._class_modifiers.charisma
+        )
 
-            case _:
-                return 0
+        self._history = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.history
+            else self._class_modifiers.intelligence
+        )
+
+        self._insight = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.insight
+            else self._class_modifiers.intelligence
+        )
+
+        self._intimidation = (
+            self._class_modifiers.charisma + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.intimidation
+            else self._class_modifiers.charisma
+        )
+
+        self._magic = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.magic
+            else self._class_modifiers.intelligence
+        )
+
+        self._medicine = (
+            self._class_modifiers.wisdom + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.medicine
+            else self._class_modifiers.wisdom
+        )
+
+        self._nature = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.nature
+            else self._class_modifiers.intelligence
+        )
+
+        self._perception = (
+            self._class_modifiers.wisdom + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.perception
+            else self._class_modifiers.wisdom
+        )
+
+        self._performance = (
+            self._class_modifiers.charisma + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.performance
+            else self._class_modifiers.charisma
+        )
+
+        self._persuasion = (
+            self._class_modifiers.charisma + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.persuasion
+            else self._class_modifiers.charisma
+        )
+
+        self._religion = (
+            self._class_modifiers.intelligence + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.religion
+            else self._class_modifiers.intelligence
+        )
+
+        self._sleight_of_hands = (
+            self._class_modifiers.dexterity + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.sleight_of_hands
+            else self._class_modifiers.dexterity
+        )
+
+        self._stealth = (
+            self._class_modifiers.dexterity + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.stealth
+            else self._class_modifiers.dexterity
+        )
+
+        self._survival = (
+            self._class_modifiers.wisdom + self._class_proficiency_bonus.proficiency_bonus
+            if self._class_abilities_posessions.survival
+            else self._class_modifiers.wisdom
+        )
