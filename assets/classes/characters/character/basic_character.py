@@ -15,9 +15,19 @@ from packages.engine.data_validation.check import Check
 
 from assets.classes.characters.races.basic_race import BasicRace
 from assets.classes.characters.professions.basic_profession import BasicProfession
-from classes.characters.stats.characteristics.basic_characteristics import BasicCharacteristics
-from classes.characters.stats.modifiers.basic_modifiers import BasicModifiers
-from classes.characters.stats.hmsp.basic_hmsp import BasicHMSP
+from assets.classes.characters.stats.characteristics.basic_characteristics import BasicCharacteristics
+from assets.classes.characters.stats.modifiers.basic_modifiers import BasicModifiers
+from assets.classes.characters.stats.hmsp.basic_hmsp import BasicHMSP
+from assets.classes.characters.stats.level.basic_level import BasicLevel
+from assets.classes.characters.stats.proficiency_bonus.basic_proficiency_bonus import BasicProficiencyBonus
+from assets.classes.characters.stats.abilities.basic_abilities import BasicAbilities
+
+from assets.classes.characters.stats.posessions.basic_abilities_posessions import BasicAbilitiesPosessions
+from assets.classes.characters.stats.posessions.basic_armors_posessions import BasicArmorsPosessions
+from assets.classes.characters.stats.posessions.basic_common_tools_posessions import BasicCommonToolsPossessions
+from assets.classes.characters.stats.posessions.basic_craft_tools_posessions import BasicCraftToolsPosessions
+from assets.classes.characters.stats.posessions.basic_transtort_posessions import BasicTransportPosessions
+from assets.classes.characters.stats.posessions.basic_weapons_posessions import BasicWeaponsPosessions
 
 
 # ##################################################
@@ -82,7 +92,8 @@ class BasicCharacter:
             name: str,
             surname: str,
             class_race: BasicRace,
-            class_profession: BasicProfession
+            class_profession: BasicProfession,
+            start_level: int = 1,
     ) -> None:
 
         self._name: str = name
@@ -93,12 +104,44 @@ class BasicCharacter:
         self._class_characteristics: BasicCharacteristics = BasicCharacteristics(
             class_race=self._class_race
         )
+
         self._class_modifiers: BasicModifiers = BasicModifiers(
             class_characteristics=self._class_characteristics
         )
+
         self._class_hmsp: BasicHMSP = BasicHMSP(
             class_profession=self._class_profession,
             class_modifiers=self._class_modifiers
+        )
+
+        self._class_level: BasicLevel = BasicLevel(start_level=start_level)
+        self._class_proficiency_bonus: BasicProficiencyBonus = BasicProficiencyBonus(
+            class_level=self._class_level
+        )
+
+        self._class_abilities_posessions: BasicAbilitiesPosessions = BasicAbilitiesPosessions(
+            class_profession=self._class_profession
+        )
+        self._class_armors_posessions: BasicArmorsPosessions = BasicArmorsPosessions(
+            class_profession=self._class_profession
+        )
+        self._class_common_tools_posessions: BasicCommonToolsPossessions = BasicCommonToolsPossessions(
+            class_profession=self._class_profession
+        )
+        self._class_craft_tools_posessions: BasicCraftToolsPosessions = BasicCraftToolsPosessions(
+            class_profession=self._class_profession
+        )
+        self._class_transport_posessions: BasicTransportPosessions = BasicTransportPosessions(
+            class_profession=self._class_profession
+        )
+        self._class_weapons_posessions: BasicWeaponsPosessions = BasicWeaponsPosessions(
+            class_profession=self._class_profession
+        )
+
+        self._class_abilities: BasicAbilities = BasicAbilities(
+            class_modifiers=self._class_modifiers,
+            class_proficiency_bonus=self._class_proficiency_bonus,
+            class_abilities_posessions=self._class_abilities_posessions
         )
 
 
